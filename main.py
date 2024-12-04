@@ -150,7 +150,7 @@ class ContrastiveLoss(nn.Module):
 for epoch in range(epochs):
     total_loss=0
     total_correct=0
-    total_example=0
+    total_examples=0
     
     #开始训练模式
     model.train()

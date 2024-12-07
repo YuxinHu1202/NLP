@@ -4,6 +4,7 @@ import pandas as pd
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 
 # def get_best_device():
@@ -190,30 +191,32 @@ for epoch in range(epochs):
         perturbed_outputs = model(**inputs)[0][:, 0, :]
         
         # 计算扰动后的分类器损失
-        perturbed_logits = classifier(perturbed_outputs)
-        perturbed_loss = nn.functional.cross_entropy(perturbed_logits, labels)
+        #perturbed_logits = classifier(perturbed_outputs)
+        #perturbed_loss = nn.functional.cross_entropy(perturbed_logits, labels)
 
         # 计算MLP损失
         mlp_outputs = mlp(outputs)
-        mlp_perturbed_outputs = mlp(perturbed_outputs)
+        #mlp_perturbed_outputs = mlp(perturbed_outputs)
 
         # 温度系数
         # t=[0.05,0.06,0.07,0.08,0.09,0.10]
         #这段代码的作用是创建一个 ContrastiveLoss（对比损失）对象，并使用它计算 MLP 输出的相似度损失
         t = 0.05#较小的温度（例如 0.05）会使得相似样本之间的相似度增加，而不同样本之间的相似度降低。
         loss_func = ContrastiveLoss(batch_size=batch_size, temperature=t)
-        mlp_similarity_loss = loss_func(mlp_outputs, mlp_perturbed_outputs)
+        #mlp_similarity_loss = loss_func(mlp_outputs, mlp_perturbed_outputs)
        
         # 计算总损失
         # Lambda = [0.1,0.2,0.3,0.4,0.5]
         Lambda = 0.5#Lambda 是一个超参数，控制 对比损失 和 原始损失/扰动损失 之间的加权系数。它的值为 0.5，意味着 原始损失/扰动损失 和 对比损失 在总损失中的贡献是相等的。
-        total_batch_loss = (1 - Lambda) * (original_loss + perturbed_loss) / 2 + mlp_similarity_loss * Lambda#这一部分计算的是 原始损失（original_loss）和 扰动损失（perturbed_loss）的加权平均。
+        #total_batch_loss = (1 - Lambda) * (original_loss + perturbed_loss) / 2 + mlp_similarity_loss * Lambda#这一部分计算的是 原始损失（original_loss）和 扰动损失（perturbed_loss）的加权平均。
         #mlp_similarity_loss * Lambda这一部分是 对比损失（mlp_similarity_loss）的加权部分。
-        total_loss += total_batch_loss.item()#total_loss 是用来记录每个训练批次的总损失。total_batch_loss.item() 会返回当前批次的总损失值（以标量的形式）。
-        
+        #total_loss += total_batch_loss.item()#total_loss 是用来记录每个训练批次的总损失。total_batch_loss.item() 会返回当前批次的总损失值（以标量的形式）。
+        total_batch_loss=original_loss
+        total_loss += total_batch_loss.item()
         
         # 反向传播和优化
-        total_batch_loss.backward() # 反向传播，计算梯度
+        #total_batch_loss.backward() # 反向传播，计算梯度
+        original_loss.backward()
         optimizer.step() ## 更新模型参数
         optimizer.zero_grad()  # 清空当前梯度
         
@@ -222,6 +225,42 @@ for epoch in range(epochs):
         correct = (predicted == labels).sum().item() ## 计算预测正确的样本数量
         total_correct += correct  # 累加正确的样本数量
         total_examples += labels.size(0) # 累加总的样本数量
+        
+                # 打印每个批次的信息
+        print(
+            f"Epoch {epoch + 1}/{epochs}, Batch {i + 1}/{len(train_loader)}, Loss: {total_batch_loss.item()}, Accuracy: {correct / labels.size(0)}")
+        
+    # 每个epoch结束后，保存模型
+    torch.save(model.state_dict(), f"result1/model_epoch_{epoch}.pt")
+    
+    # 计算并打印平均损失
+    avg_loss = total_loss / len(train_loader)
+    loss_list.append(avg_loss)
+    print(f"Epoch {epoch + 1}/{epochs}, Avg Loss: {avg_loss}")
+
+    # 计算并打印准确率
+    avg_accuracy = total_correct / total_examples
+    accuracy_list.append(avg_accuracy)
+    print(f"Epoch {epoch + 1}/{epochs}, Avg Accuracy: {avg_accuracy}")
+
+# loss
+plt.figure()
+plt.plot(range(epochs), accuracy_list)
+plt.title('loss over epochs')
+plt.xlabel('Epochs')
+plt.ylabel('loss')
+plt.savefig('result1/loss.png')  # Save the figure
+plt.close()
+
+# Accuracy
+plt.figure()
+plt.plot(range(epochs), accuracy_list)
+plt.title('Accuracy over epochs')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.savefig('result1/accuracy.png')  # Save the figure
+plt.close()
+
 
 
         

@@ -11,16 +11,16 @@ if seed_value != -1:
     import tensorflow as tf
     tf.set_random_seed(seed_value)
 
-#from langml import keras, K, L
+import keras
 from keras import backend as K
 from keras import layers as L
 
+# from langml import keras, K, L
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 from langml.plm.bert import load_bert
 from langml.layers import SelfAttention
 from bert4keras.optimizers import Adam, extend_with_weight_decay, extend_with_piecewise_linear_lr
-
 
 def search_layer(inputs, name, exclude_from=None):
     if exclude_from is None:
@@ -142,7 +142,7 @@ class VariationalAutoencoder:
     def fit(self, X, verbose=2):
         if not self.autoencoder:
             self._compile(X.shape[1])
-        per_size = (len(X) * 0.9) // self.batch_size
+        per_size = (len(X) * 0.7) // self.batch_size
         train_size = int((per_size + 1) * self.batch_size)
         X_shuffle = shuffle(X)
         X_train = X_shuffle[:train_size]

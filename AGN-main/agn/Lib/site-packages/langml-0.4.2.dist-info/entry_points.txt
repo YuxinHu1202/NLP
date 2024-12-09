@@ -1,0 +1,3 @@
+[console_scripts]
+langml-cli = langml.cli:main
+

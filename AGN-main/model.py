@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-
+import numpy as np
 seed_value = int(os.getenv('RANDOM_SEED', -1))
 if seed_value != -1:
     import random
@@ -262,7 +262,7 @@ class AGNClassifier:
             },
             'weight_decay_rate': 0.01,
             'exclude_from_weight_decay': ['Norm', 'bias'],
-            'bias_correction': False,
+            # 'bias_correction': False,
         }
 
         self.model.compile(

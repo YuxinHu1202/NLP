@@ -22,9 +22,17 @@ if len(sys.argv) != 2:
     exit()
 
 config_file = str(sys.argv[1])
-
+    
+# 加载 config_file 的内容
 with open(config_file, "r") as reader:
     config = json.load(reader)
+
+# 加载 config_updated.json 的内容
+with open('config_updated.json', 'r') as f:
+    updated_config = json.load(f)
+
+# 合并，更新 config 中的值为 updated_config 中的值
+config.update(updated_config)
 
 print("config:")
 pprint(config)

@@ -88,6 +88,10 @@ for idx in range(1, config['iterations'] + 1):  # 迭代次数由配置文件中
 
     # 更新配置以包含生成器的步数和标签大小
     config['steps_per_epoch'] = generator.steps_per_epoch  # 每个 epoch 的步数
+    # 保存更新后的 config 到文件
+    import json
+    with open('config_updated.json', 'w') as f:
+        json.dump(config, f, indent=4)
     config['output_size'] = dataloader.label_size  # 输出的标签数量
 
     # 初始化分类模型

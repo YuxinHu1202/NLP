@@ -1,0 +1,15 @@
+config:
+{'ae_epochs': 100,
+ 'batch_size': 32,
+ 'dev_path': 'SST2/test.jsonl',
+ 'dropout': 0.3,
+ 'epochs': 10,
+ 'epsilon': 0.05,
+ 'fgm_epsilon': 0.3,
+ 'iterations': 1,
+ 'learning_rate': 3e-05,
+ 'max_len': 80,
+ 'pretrained_model_dir': 'uncased_L-12_H-768_A-12',
+ 'save_dir': 'save',
+ 'train_path': 'SST2/train.jsonl',
+ 'verbose': 1}

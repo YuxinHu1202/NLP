@@ -1,0 +1,16 @@
+{
+    "max_len": 40,
+    "ae_epochs": 100,
+    "epochs": 10,
+    "batch_size": 32,
+    "learning_rate": 3e-5,
+    "pretrained_model_dir": "uncased_L-12_H-768_A-12",
+    "train_path": "SST2/train.jsonl",
+    "dev_path": "SST2/test.jsonl",
+    "save_dir": "save3",
+    "epsilon": 0.05,
+    "dropout": 0.5,
+    "fgm_epsilon": 0.3,
+    "iterations": 1,
+    "verbose": 1
+}

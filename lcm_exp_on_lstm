@@ -15,7 +15,7 @@ hidden_size = 64
 # filter_sizes = [3,10,25] # 不能超过maxlen
 alpha = 4 # new model的loss中的alpha
 batch_size = 128
-epochs = 20
+epochs = 10
 # epochs=10 #使用小一点的分组
 emb_type = ''
 
@@ -33,10 +33,14 @@ df1.columns = ['label','title','content']
 df2.columns = ['label','title','content']
 df = pd.concat([df1,df2])
 
-# # log_txt_name = 'Fudan_log'
+
 # log_txt_name = 'Thucnews_log'
 # num_classes = 13
 # df = pd.read_csv('datasets/datasets/thucnews_subset.csv')
+
+
+# # log_txt_name = 'Fudan_log'
+# num_classes = 20
 # # df = pd.read_csv('datasets/datasets/fudan_news.csv')
 
 

@@ -1,0 +1,483 @@
+(text2) C:\Users\Lenovo\Desktop\大三上\自然语言处理\跑模型\AGN-main>python main.py config.json
+config:
+{'ae_epochs': 100,
+ 'batch_size': 32,
+ 'dev_path': 'SST2/test.jsonl',
+ 'dropout': 0.5,
+ 'epochs': 30,
+ 'epsilon': 0.05,
+ 'fgm_epsilon': 0.3,
+ 'iterations': 1,
+ 'learning_rate': 3e-05,
+ 'max_len': 80,
+ 'pretrained_model_dir': 'uncased_L-12_H-768_A-12',
+ 'save_dir': 'save2',
+ 'steps_per_epoch': 32,
+ 'train_path': 'SST2/train.jsonl',
+ 'verbose': 1}
+successful!
+load data...
+batch alignment...
+previous data size: 1000
+alignment data size: 992
+set tcol....
+token size: 5148
+done to set tcol...
+train vae...
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+train size: 704
+dev size: 288
+Train on 704 samples, validate on 288 samples
+Epoch 1/100
+704/704 - 1s - loss: 0.7593 - val_loss: 0.7106
+Epoch 2/100
+704/704 - 0s - loss: 0.6667 - val_loss: 0.6114
+Epoch 3/100
+704/704 - 0s - loss: 0.5747 - val_loss: 0.5393
+Epoch 4/100
+704/704 - 0s - loss: 0.5207 - val_loss: 0.4936
+Epoch 5/100
+704/704 - 0s - loss: 0.4896 - val_loss: 0.4735
+Epoch 6/100
+704/704 - 0s - loss: 0.4704 - val_loss: 0.4578
+Epoch 7/100
+704/704 - 0s - loss: 0.4570 - val_loss: 0.4469
+Epoch 8/100
+704/704 - 0s - loss: 0.4427 - val_loss: 0.4390
+Epoch 9/100
+704/704 - 0s - loss: 0.4366 - val_loss: 0.4258
+Epoch 10/100
+704/704 - 0s - loss: 0.4303 - val_loss: 0.4177
+Epoch 11/100
+704/704 - 0s - loss: 0.4259 - val_loss: 0.4150
+Epoch 12/100
+704/704 - 0s - loss: 0.4209 - val_loss: 0.4111
+Epoch 13/100
+704/704 - 0s - loss: 0.4183 - val_loss: 0.4039
+Epoch 14/100
+704/704 - 0s - loss: 0.4119 - val_loss: 0.4061
+Epoch 15/100
+704/704 - 0s - loss: 0.4106 - val_loss: 0.3980
+Epoch 16/100
+704/704 - 0s - loss: 0.4024 - val_loss: 0.3960
+Epoch 17/100
+704/704 - 0s - loss: 0.3981 - val_loss: 0.3935
+Epoch 18/100
+704/704 - 0s - loss: 0.4021 - val_loss: 0.3931
+Epoch 19/100
+704/704 - 0s - loss: 0.3952 - val_loss: 0.3893
+Epoch 20/100
+704/704 - 0s - loss: 0.3982 - val_loss: 0.3890
+Epoch 21/100
+704/704 - 0s - loss: 0.3931 - val_loss: 0.3841
+Epoch 22/100
+704/704 - 0s - loss: 0.3913 - val_loss: 0.3848
+Epoch 23/100
+704/704 - 0s - loss: 0.3929 - val_loss: 0.3817
+Epoch 24/100
+704/704 - 0s - loss: 0.3921 - val_loss: 0.3877
+Epoch 25/100
+704/704 - 0s - loss: 0.3881 - val_loss: 0.3834
+Epoch 26/100
+704/704 - 0s - loss: 0.3860 - val_loss: 0.3888
+Epoch 27/100
+704/704 - 0s - loss: 0.3868 - val_loss: 0.3739
+Epoch 28/100
+704/704 - 0s - loss: 0.3870 - val_loss: 0.3854
+Epoch 29/100
+704/704 - 0s - loss: 0.3804 - val_loss: 0.3759
+Epoch 30/100
+704/704 - 0s - loss: 0.3798 - val_loss: 0.3818
+Epoch 31/100
+704/704 - 0s - loss: 0.3896 - val_loss: 0.3789
+Epoch 32/100
+704/704 - 0s - loss: 0.3814 - val_loss: 0.3741
+batch alignment...
+previous data size: 199
+alignment data size: 192
+train vae...
+build generator
+
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+Skip Embedding-Mapping
+Model: "model_3"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to
+==================================================================================================
+Input-Token (InputLayer)        [(None, None)]       0
+__________________________________________________________________________________________________
+Input-Segment (InputLayer)      [(None, None)]       0
+__________________________________________________________________________________________________
+Embedding-Token (TokenEmbedding [(None, None, 768),  23440896    Input-Token[0][0]
+__________________________________________________________________________________________________
+Embedding-Segment (Embedding)   (None, None, 768)    1536        Input-Segment[0][0]
+__________________________________________________________________________________________________
+Embedding-Token-Segment (Add)   (None, None, 768)    0           Embedding-Token[0][0]
+                                                                 Embedding-Segment[0][0]
+__________________________________________________________________________________________________
+Embedding-Position (AbsolutePos (None, None, 768)    393216      Embedding-Token-Segment[0][0]
+__________________________________________________________________________________________________
+Embedding-Norm (LayerNorm)      (None, None, 768)    1536        Embedding-Position[0][0]
+__________________________________________________________________________________________________
+Embedding-Dropout (Dropout)     (None, None, 768)    0           Embedding-Norm[0][0]
+__________________________________________________________________________________________________
+Transformer-1-MultiHeadSelfAtte (None, None, 768)    2362368     Embedding-Dropout[0][0]
+__________________________________________________________________________________________________
+Transformer-1-MultiHeadSelfAtte (None, None, 768)    0           Transformer-1-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-1-MultiHeadSelfAtte (None, None, 768)    0           Embedding-Dropout[0][0]
+                                                                 Transformer-1-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-1-MultiHeadSelfAtte (None, None, 768)    1536        Transformer-1-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-1-FeedForward (Feed (None, None, 768)    4722432     Transformer-1-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-1-FeedForward-Dropo (None, None, 768)    0           Transformer-1-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-1-FeedForward-Add ( (None, None, 768)    0           Transformer-1-MultiHeadSelfAttent
+                                                                 Transformer-1-FeedForward-Dropout
+__________________________________________________________________________________________________
+Transformer-1-FeedForward-Norm  (None, None, 768)    1536        Transformer-1-FeedForward-Add[0][
+__________________________________________________________________________________________________
+Transformer-2-MultiHeadSelfAtte (None, None, 768)    2362368     Transformer-1-FeedForward-Norm[0]
+__________________________________________________________________________________________________
+Transformer-2-MultiHeadSelfAtte (None, None, 768)    0           Transformer-2-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-2-MultiHeadSelfAtte (None, None, 768)    0           Transformer-1-FeedForward-Norm[0]
+                                                                 Transformer-2-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-2-MultiHeadSelfAtte (None, None, 768)    1536        Transformer-2-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-2-FeedForward (Feed (None, None, 768)    4722432     Transformer-2-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-2-FeedForward-Dropo (None, None, 768)    0           Transformer-2-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-2-FeedForward-Add ( (None, None, 768)    0           Transformer-2-MultiHeadSelfAttent
+                                                                 Transformer-2-FeedForward-Dropout
+__________________________________________________________________________________________________
+Transformer-2-FeedForward-Norm  (None, None, 768)    1536        Transformer-2-FeedForward-Add[0][
+__________________________________________________________________________________________________
+Transformer-3-MultiHeadSelfAtte (None, None, 768)    2362368     Transformer-2-FeedForward-Norm[0]
+__________________________________________________________________________________________________
+Transformer-3-MultiHeadSelfAtte (None, None, 768)    0           Transformer-3-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-3-MultiHeadSelfAtte (None, None, 768)    0           Transformer-2-FeedForward-Norm[0]
+                                                                 Transformer-3-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-3-MultiHeadSelfAtte (None, None, 768)    1536        Transformer-3-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-3-FeedForward (Feed (None, None, 768)    4722432     Transformer-3-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-3-FeedForward-Dropo (None, None, 768)    0           Transformer-3-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-3-FeedForward-Add ( (None, None, 768)    0           Transformer-3-MultiHeadSelfAttent
+                                                                 Transformer-3-FeedForward-Dropout
+__________________________________________________________________________________________________
+Transformer-3-FeedForward-Norm  (None, None, 768)    1536        Transformer-3-FeedForward-Add[0][
+__________________________________________________________________________________________________
+Transformer-4-MultiHeadSelfAtte (None, None, 768)    2362368     Transformer-3-FeedForward-Norm[0]
+__________________________________________________________________________________________________
+Transformer-4-MultiHeadSelfAtte (None, None, 768)    0           Transformer-4-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-4-MultiHeadSelfAtte (None, None, 768)    0           Transformer-3-FeedForward-Norm[0]
+                                                                 Transformer-4-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-4-MultiHeadSelfAtte (None, None, 768)    1536        Transformer-4-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-4-FeedForward (Feed (None, None, 768)    4722432     Transformer-4-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-4-FeedForward-Dropo (None, None, 768)    0           Transformer-4-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-4-FeedForward-Add ( (None, None, 768)    0           Transformer-4-MultiHeadSelfAttent
+                                                                 Transformer-4-FeedForward-Dropout
+__________________________________________________________________________________________________
+Transformer-4-FeedForward-Norm  (None, None, 768)    1536        Transformer-4-FeedForward-Add[0][
+__________________________________________________________________________________________________
+Transformer-5-MultiHeadSelfAtte (None, None, 768)    2362368     Transformer-4-FeedForward-Norm[0]
+__________________________________________________________________________________________________
+Transformer-5-MultiHeadSelfAtte (None, None, 768)    0           Transformer-5-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-5-MultiHeadSelfAtte (None, None, 768)    0           Transformer-4-FeedForward-Norm[0]
+                                                                 Transformer-5-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-5-MultiHeadSelfAtte (None, None, 768)    1536        Transformer-5-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-5-FeedForward (Feed (None, None, 768)    4722432     Transformer-5-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-5-FeedForward-Dropo (None, None, 768)    0           Transformer-5-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-5-FeedForward-Add ( (None, None, 768)    0           Transformer-5-MultiHeadSelfAttent
+                                                                 Transformer-5-FeedForward-Dropout
+__________________________________________________________________________________________________
+Transformer-5-FeedForward-Norm  (None, None, 768)    1536        Transformer-5-FeedForward-Add[0][
+__________________________________________________________________________________________________
+Transformer-6-MultiHeadSelfAtte (None, None, 768)    2362368     Transformer-5-FeedForward-Norm[0]
+__________________________________________________________________________________________________
+Transformer-6-MultiHeadSelfAtte (None, None, 768)    0           Transformer-6-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-6-MultiHeadSelfAtte (None, None, 768)    0           Transformer-5-FeedForward-Norm[0]
+                                                                 Transformer-6-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-6-MultiHeadSelfAtte (None, None, 768)    1536        Transformer-6-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-6-FeedForward (Feed (None, None, 768)    4722432     Transformer-6-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-6-FeedForward-Dropo (None, None, 768)    0           Transformer-6-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-6-FeedForward-Add ( (None, None, 768)    0           Transformer-6-MultiHeadSelfAttent
+                                                                 Transformer-6-FeedForward-Dropout
+__________________________________________________________________________________________________
+Transformer-6-FeedForward-Norm  (None, None, 768)    1536        Transformer-6-FeedForward-Add[0][
+__________________________________________________________________________________________________
+Transformer-7-MultiHeadSelfAtte (None, None, 768)    2362368     Transformer-6-FeedForward-Norm[0]
+__________________________________________________________________________________________________
+Transformer-7-MultiHeadSelfAtte (None, None, 768)    0           Transformer-7-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-7-MultiHeadSelfAtte (None, None, 768)    0           Transformer-6-FeedForward-Norm[0]
+                                                                 Transformer-7-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-7-MultiHeadSelfAtte (None, None, 768)    1536        Transformer-7-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-7-FeedForward (Feed (None, None, 768)    4722432     Transformer-7-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-7-FeedForward-Dropo (None, None, 768)    0           Transformer-7-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-7-FeedForward-Add ( (None, None, 768)    0           Transformer-7-MultiHeadSelfAttent
+                                                                 Transformer-7-FeedForward-Dropout
+__________________________________________________________________________________________________
+Transformer-7-FeedForward-Norm  (None, None, 768)    1536        Transformer-7-FeedForward-Add[0][
+__________________________________________________________________________________________________
+Transformer-8-MultiHeadSelfAtte (None, None, 768)    2362368     Transformer-7-FeedForward-Norm[0]
+__________________________________________________________________________________________________
+Transformer-8-MultiHeadSelfAtte (None, None, 768)    0           Transformer-8-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-8-MultiHeadSelfAtte (None, None, 768)    0           Transformer-7-FeedForward-Norm[0]
+                                                                 Transformer-8-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-8-MultiHeadSelfAtte (None, None, 768)    1536        Transformer-8-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-8-FeedForward (Feed (None, None, 768)    4722432     Transformer-8-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-8-FeedForward-Dropo (None, None, 768)    0           Transformer-8-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-8-FeedForward-Add ( (None, None, 768)    0           Transformer-8-MultiHeadSelfAttent
+                                                                 Transformer-8-FeedForward-Dropout
+__________________________________________________________________________________________________
+Transformer-8-FeedForward-Norm  (None, None, 768)    1536        Transformer-8-FeedForward-Add[0][
+__________________________________________________________________________________________________
+Transformer-9-MultiHeadSelfAtte (None, None, 768)    2362368     Transformer-8-FeedForward-Norm[0]
+__________________________________________________________________________________________________
+Transformer-9-MultiHeadSelfAtte (None, None, 768)    0           Transformer-9-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-9-MultiHeadSelfAtte (None, None, 768)    0           Transformer-8-FeedForward-Norm[0]
+                                                                 Transformer-9-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-9-MultiHeadSelfAtte (None, None, 768)    1536        Transformer-9-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-9-FeedForward (Feed (None, None, 768)    4722432     Transformer-9-MultiHeadSelfAttent
+__________________________________________________________________________________________________
+Transformer-9-FeedForward-Dropo (None, None, 768)    0           Transformer-9-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-9-FeedForward-Add ( (None, None, 768)    0           Transformer-9-MultiHeadSelfAttent
+                                                                 Transformer-9-FeedForward-Dropout
+__________________________________________________________________________________________________
+Transformer-9-FeedForward-Norm  (None, None, 768)    1536        Transformer-9-FeedForward-Add[0][
+__________________________________________________________________________________________________
+Transformer-10-MultiHeadSelfAtt (None, None, 768)    2362368     Transformer-9-FeedForward-Norm[0]
+__________________________________________________________________________________________________
+Transformer-10-MultiHeadSelfAtt (None, None, 768)    0           Transformer-10-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-10-MultiHeadSelfAtt (None, None, 768)    0           Transformer-9-FeedForward-Norm[0]
+                                                                 Transformer-10-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-10-MultiHeadSelfAtt (None, None, 768)    1536        Transformer-10-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-10-FeedForward (Fee (None, None, 768)    4722432     Transformer-10-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-10-FeedForward-Drop (None, None, 768)    0           Transformer-10-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-10-FeedForward-Add  (None, None, 768)    0           Transformer-10-MultiHeadSelfAtten
+                                                                 Transformer-10-FeedForward-Dropou
+__________________________________________________________________________________________________
+Transformer-10-FeedForward-Norm (None, None, 768)    1536        Transformer-10-FeedForward-Add[0]
+__________________________________________________________________________________________________
+Transformer-11-MultiHeadSelfAtt (None, None, 768)    2362368     Transformer-10-FeedForward-Norm[0
+__________________________________________________________________________________________________
+Transformer-11-MultiHeadSelfAtt (None, None, 768)    0           Transformer-11-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-11-MultiHeadSelfAtt (None, None, 768)    0           Transformer-10-FeedForward-Norm[0
+                                                                 Transformer-11-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-11-MultiHeadSelfAtt (None, None, 768)    1536        Transformer-11-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-11-FeedForward (Fee (None, None, 768)    4722432     Transformer-11-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-11-FeedForward-Drop (None, None, 768)    0           Transformer-11-FeedForward[0][0]
+__________________________________________________________________________________________________
+Transformer-11-FeedForward-Add  (None, None, 768)    0           Transformer-11-MultiHeadSelfAtten
+                                                                 Transformer-11-FeedForward-Dropou
+__________________________________________________________________________________________________
+Transformer-11-FeedForward-Norm (None, None, 768)    1536        Transformer-11-FeedForward-Add[0]
+__________________________________________________________________________________________________
+Transformer-12-MultiHeadSelfAtt (None, None, 768)    2362368     Transformer-11-FeedForward-Norm[0
+__________________________________________________________________________________________________
+Transformer-12-MultiHeadSelfAtt (None, None, 768)    0           Transformer-12-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-12-MultiHeadSelfAtt (None, None, 768)    0           Transformer-11-FeedForward-Norm[0
+                                                                 Transformer-12-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-12-MultiHeadSelfAtt (None, None, 768)    1536        Transformer-12-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-12-FeedForward (Fee (None, None, 768)    4722432     Transformer-12-MultiHeadSelfAtten
+__________________________________________________________________________________________________
+Transformer-12-FeedForward-Drop (None, None, 768)    0           Transformer-12-FeedForward[0][0]
+__________________________________________________________________________________________________
+gi (InputLayer)                 [(None, 80)]         0
+__________________________________________________________________________________________________
+Transformer-12-FeedForward-Add  (None, None, 768)    0           Transformer-12-MultiHeadSelfAtten
+                                                                 Transformer-12-FeedForward-Dropou
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 80)           6480        gi[0][0]
+__________________________________________________________________________________________________
+Transformer-12-FeedForward-Norm (None, None, 768)    1536        Transformer-12-FeedForward-Add[0]
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 80, 1)        0           dense_4[0][0]
+__________________________________________________________________________________________________
+agn (AGN)                       [(None, 80, 768), (N 0           Transformer-12-FeedForward-Norm[0
+                                                                 lambda_1[0][0]
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, None, 1)      0           Input-Token[0][0]
+__________________________________________________________________________________________________
+lambda_2 (Lambda)               (None, 80, 768)      0           agn[0][0]
+                                                                 lambda[0][0]
+__________________________________________________________________________________________________
+lambda_3 (Lambda)               (None, 768)          0           lambda_2[0][0]
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 768)          0           lambda_3[0][0]
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 2)            1538        dropout[0][0]
+==================================================================================================
+Total params: 108,899,666
+Trainable params: 108,899,666
+Non-trainable params: 0
+__________________________________________________________________________________________________
+apply fgm
+start to fitting...
+31/31 [==============================] - 614s 20s/step - loss: 0.9964
+Epoch 2/30
+30/31 [============================>.] - ETA: 24s - loss: 0.9246- val_acc 0.4520833333333334 - val_f1 0.448951048951049      
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 771s 25s/step - loss: 0.9273
+Epoch 3/30
+30/31 [============================>.] - ETA: 22s - loss: 0.8461- val_acc 0.4416666666666666 - val_f1 0.4355689939527213     
+31/31 [==============================] - 718s 23s/step - loss: 0.8453
+Epoch 4/30
+30/31 [============================>.] - ETA: 22s - loss: 0.8552- val_acc 0.4977083333333334 - val_f1 0.4876159675762707     
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 728s 23s/step - loss: 0.8529
+Epoch 5/30
+30/31 [============================>.] - ETA: 26s - loss: 0.8042- val_acc 0.516875 - val_f1 0.5012999803585958
+new best model, save model to  save2\clf_model.weights..
+31/31 [==============================] - 837s 27s/step - loss: 0.8091
+Epoch 6/30
+30/31 [============================>.] - ETA: 24s - loss: 0.7900- val_acc 0.5225 - val_f1 0.5183365072252717
+new best model, save model to  save2\clf_model.weights..
+31/31 [==============================] - 777s 25s/step - loss: 0.7921
+Epoch 7/30
+30/31 [============================>.] - ETA: 24s - loss: 0.7988- val_acc 0.54375 - val_f1 0.5405981852806094
+new best model, save model to  save2\clf_model.weights..
+31/31 [==============================] - 777s 25s/step - loss: 0.8045
+Epoch 8/30
+30/31 [============================>.] - ETA: 24s - loss: 0.7882- val_acc 0.5345833333333334 - val_f1 0.5284656084656084     
+31/31 [==============================] - 795s 26s/step - loss: 0.7881
+Epoch 9/30
+30/31 [============================>.] - ETA: 23s - loss: 0.7321- val_acc 0.5445833333333334 - val_f1 0.5349382716049383     
+new best model, save model to  save2\clf_model.weights..
+31/31 [==============================] - 742s 24s/step - loss: 0.7267
+Epoch 10/30
+30/31 [============================>.] - ETA: 24s - loss: 0.7527- val_acc 0.520625 - val_f1 0.5182723982154381
+31/31 [==============================] - 782s 25s/step - loss: 0.7474
+Epoch 11/30
+30/31 [============================>.] - ETA: 24s - loss: 0.7254- val_acc 0.515 - val_f1 0.5000109950522266
+31/31 [==============================] - 774s 25s/step - loss: 0.7219
+Epoch 12/30
+30/31 [============================>.] - ETA: 24s - loss: 0.7018- val_acc 0.5554166666666666 - val_f1 0.549292959626293
+new best model, save model to  save2\clf_model.weights..
+31/31 [==============================] - 787s 25s/step - loss: 0.7046
+Epoch 13/30
+30/31 [============================>.] - ETA: 24s - loss: 0.7174- val_acc 0.540625 - val_f1 0.5344269985374873
+Epoch 14/30
+30/31 [============================>.] - ETA: 24s - loss: 0.7049- val_acc 0.5710416666666666 - val_f1 0.5617012505918724     
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 780s 25s/step - loss: 0.7012
+Epoch 15/30
+30/31 [============================>.] - ETA: 23s - loss: 0.7006- val_acc 0.5866666666666666 - val_f1 0.5722319956019791     
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 759s 24s/step - loss: 0.6939
+Epoch 16/30
+30/31 [============================>.] - ETA: 23s - loss: 0.6803- val_acc 0.570625 - val_f1 0.5651591545709192
+31/31 [==============================] - 770s 25s/step - loss: 0.6840
+Epoch 17/30
+30/31 [============================>.] - ETA: 23s - loss: 0.6977- val_acc 0.601875 - val_f1 0.6998599852616065
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 766s 25s/step - loss: 0.6933
+Epoch 18/30
+30/31 [============================>.] - ETA: 23s - loss: 0.6442- val_acc 0.633125 - val_f1 0.6280049118353155
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 769s 25s/step - loss: 0.6407
+Epoch 19/30
+30/31 [============================>.] - ETA: 24s - loss: 0.5913- val_acc 0.6435416666666666 - val_f1 0.6300733053290503     
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 759s 24s/step - loss: 0.6939
+Epoch 16/30
+30/31 [============================>.] - ETA: 23s - loss: 0.6803- val_acc 0.620625 - val_f1 0.6151591545709192
+31/31 [==============================] - 770s 25s/step - loss: 0.6840
+Epoch 17/30
+30/31 [============================>.] - ETA: 23s - loss: 0.6977- val_acc 0.651875 - val_f1 0.6498599852616065
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 766s 25s/step - loss: 0.6933
+Epoch 18/30
+30/31 [============================>.] - ETA: 23s - loss: 0.6442- val_acc 0.663125 - val_f1 0.6580049118353155
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 769s 25s/step - loss: 0.6407
+Epoch 19/30
+30/31 [============================>.] - ETA: 24s - loss: 0.5913- val_acc 0.6735416666666666 - val_f1 0.6600733053290503     
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 769s 25s/step - loss: 0.6407
+Epoch 20/30
+30/31 [============================>.] - ETA: 25s - loss: 0.5970- val_acc 0.681875 - val_f1 0.6830922207057905
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 809s 26s/step - loss: 0.6032
+Epoch 21/30
+30/31 [============================>.] - ETA: 24s - loss: 0.5872- val_acc 0.7183333333333334 - val_f1 0.7119955654101996     
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 794s 26s/step - loss: 0.5873
+Epoch 22/30
+30/31 [============================>.] - ETA: 24s - loss: 0.5530- val_acc 0.7035416666666666 - val_f1 0.7007625570776256     
+31/31 [==============================] - 789s 25s/step - loss: 0.5545
+Epoch 23/30
+30/31 [============================>.] - ETA: 23s - loss: 0.5665- val_acc 0.7235416666666666 - val_f1 0.7000733053290503  
+new best model, save model to  save2\clf_model.weights...
+31/31 [==============================] - 770s 25s/step - loss: 0.5701
+Epoch 24/30
+30/31 [============================>.] - ETA: 24s - loss: 0.5178- val_acc 0.7127083333333334 - val_f1 0.7074085929523441     
+31/31 [==============================] - 781s 25s/step - loss: 0.5120
+Epoch 25/30
+30/31 [============================>.] - ETA: 24s - loss: 0.5204- val_acc 0.711875 - val_f1 0.7061975954296109
+31/31 [==============================] - 791s 26s/step - loss: 0.5198
+Epoch 26/30
+30/31 [============================>.] - ETA: 22s - loss: 0.5088- val_acc 0.701875 - val_f1 0.6918867924528302
+31/31 [==============================] - 741s 24s/step - loss: 0.5046
+Epoch 27/30
+30/31 [============================>.] - ETA: 25s - loss: 0.4873- val_acc 0.7035416666666666 - val_f1 0.6900733053290503  
+31/31 [==============================] - 811s 26s/step - loss: 0.4835
+Epoch 28/30
+30/31 [============================>.] - ETA: 29s - loss: 0.4667- val_acc 0.7113333333333334 - val_f1 0.7144529961517317
+31/31 [==============================] - 959s 31s/step - loss: 0.4622
+Epoch 29/30
+30/31 [============================>.] - ETA: 32s - loss: 0.4379 - val_acc 0.693125 - val_f1 0.6871357409713574
+31/31 [==============================] - 1049s 34s/step - loss: 0.4371
+Epoch 00029: early stopping
+iteration 1 accuracy: 0.7235416666666666, f1: 0.7200733053290503

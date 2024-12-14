@@ -61,10 +61,22 @@ dataloader = DataLoader(
 dataloader.set_train(config['train_path'])  # 设置训练数据路径
 dataloader.set_dev(config['dev_path'])  # 设置验证数据路径
 
+
 # 保存变分自编码器权重和词汇表
 dataloader.save_autoencoder(os.path.join(config['save_dir'], 'autoencoder.weights'))
 dataloader.save_vocab(os.path.join(config['save_dir'], 'vocab.pickle'))
 
+# loss
+# 通常会从较大的值（如 7 或更高）开始，逐步下降到较小的值。
+# 如果 loss 长期维持在较高的水平，说明模型没有学到有效特征，可能存在问题。
+
+# accuracy
+# 初始时可能很低（甚至接近 0%），但应该随着训练逐步提升。
+# 一般来说，对于简单的二分类任务，accuracy 在 2-3 个 epoch 后应该接近 50% 或更高。
+
+# f1
+# f1 是综合了精确率和召回率的指标，初始时也可能较低，但随着训练进行，应该逐步提升。
+# 二分类任务中，f1 通常和 accuracy 一致，除非数据不平衡。
 # 初始化用于记录每次迭代的准确率和 F1 分数的列表
 accuracy_list = []
 f1_list = []
@@ -86,15 +98,8 @@ for idx in range(1, config['iterations'] + 1):  # 迭代次数由配置文件中
         os.path.join(config['save_dir'], 'clf_model.weights')  # 模型权重保存路径
     )
 
-    # 更新配置以包含生成器的步数和标签大小
-    config['steps_per_epoch'] = generator.steps_per_epoch  # 每个 epoch 的步数
-    # 保存更新后的 config 到文件
-    import json
-    with open('config_updated.json', 'w') as f:
-        json.dump(config, f, indent=4)
-    config['output_size'] = dataloader.label_size  # 输出的标签数量
-
-    # 初始化分类模型
+    config['steps_per_epoch'] = generator.steps_per_epoch
+    config['output_size'] = dataloader.label_size
     model = AGNClassifier(config)
 
     print("start to fitting...")  # 打印提示信息

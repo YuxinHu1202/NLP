@@ -11,9 +11,15 @@ if seed_value != -1:
     import tensorflow as tf
     tf.set_random_seed(seed_value)
 
-import keras
-from keras import backend as K
-from keras import layers as L
+# import keras
+# from keras import backend as K
+# from keras import layers as L
+
+import tensorflow.keras as keras
+from tensorflow.keras import backend as K
+from tensorflow.keras import layers as L
+
+
 
 # from langml import keras, K, L
 from sklearn.utils import shuffle

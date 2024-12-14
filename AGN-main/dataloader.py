@@ -310,6 +310,7 @@ class DataLoader:
                 if build_vocab:
                     if obj['label'] not in self.label2idx:
                         self.label2idx[obj['label']] = len(self.label2idx)
+                        # print("label2idx:", self.label2idx)  # 调试信息
                         # print(f"New label found: {obj['label']} assigned to index {self.label2idx[obj['label']]}")
                 
                 # Tokenize the text

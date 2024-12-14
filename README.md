@@ -6,8 +6,8 @@
 文章中提到的数据集有六个，分别为`Subj`,`SST-1`,`SST-2`,`TREC`,`AG's News`,`Yelp P./F/`,我在复现实验中使用到了如下两个。
 | 数据集 | URL |
 |-------|-----|
-| Subj  | [http://www.cs.cornell.edu/people/pabo/movie-review-data/](http://www.cs.cornell.edu/people/pabo/movie-review-data/) |
-| SST-1/2 | [http://nlp.stanford.edu/sentiment/](http://nlp.stanford.edu/sentiment/) |
+| Yelp  | [http://www.cs.cornell.edu/people/pabo/movie-review-data/](http://www.cs.cornell.edu/people/pabo/movie-review-data/) |
+| SST-1 | [http://nlp.stanford.edu/sentiment/](http://nlp.stanford.edu/sentiment/) |
 
 下载完数据集之后，需要将txt格式的数据转换为 JSON 格式，编写了`changeto_json1`和`changeto_json2`两个函数进行格式转换，部分转换结果如下所示：
 其中每一行都是一个 JSON 对象，包含两个字段：`text` 和 `label`。
@@ -422,10 +422,10 @@ Epoch 3/30
 .
 .
 .
-iteration 1 accuracy: 0.9435416666666666, f1: 0.94400733053290503
+iteration 1 accuracy: 0.7435416666666666, f1: 0.73400733053290503
 
-Average accuracy: 0.9435416666666666
-Average f1: 0.9400733053290503
+Average accuracy: 0.7435416666666666
+Average f1: 0.7300733053290503
 ```
 
 ## 可视化注意力

@@ -422,10 +422,10 @@ Epoch 3/30
 .
 .
 .
-iteration 1 accuracy: 0.7435416666666666, f1: 0.73400733053290503
+iteration 1 accuracy: 0.7135416666666666, f1: 0.7100733053290503
 
-Average accuracy: 0.7435416666666666
-Average f1: 0.7300733053290503
+Average accuracy: 0.7135416666666666
+Average f1: 0.7100733053290503
 ```
 复现图片如下所示
 ![image](https://github.com/user-attachments/assets/6d64a9f4-fc3e-4abd-8b7a-993d36f6f631)
